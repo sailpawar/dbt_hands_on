@@ -1,0 +1,21 @@
+# generic source freshness and other tests is included here
+version: 2
+
+sources:
+  - name: sail
+    description: dbt connects to 'sail' schema in 'dbt_workshop_badge2' db to get data from table 'raw_sales_data'
+    database: dbt_workshop_badge2
+    schema: sail
+    tables:
+      - name: raw_sales_data
+        description: data lands in this table in snowflake through snowpipe and s3 integration
+        # columns: 
+        #   - name: ***
+        #     description: the primary key for ***
+        #     tests:
+        #       - unique
+        #       - not_null
+        # loaded_at_field: _etl_loaded_at
+        # freshness:
+        #   warn_after: {count: 12, period: hour}
+          # error_after: {count: 24, period: hour}
