@@ -6,5 +6,5 @@ with required_columns as(
     SALES_PERSON,
     SALES_TARGET,
     ACTUAL_SALES
-    from {{ source('sail', 'raw_sales_data') }}
+    from {{ ref('stg_initial') }}
 ) select * from required_columns

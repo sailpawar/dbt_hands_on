@@ -4,7 +4,7 @@ with transaction_data as(
             transaction_month, 
             year 
     from 
-            {{ source('sail', 'raw_sales_data') }}
+            {{ ref('stg_initial') }}
     group by 
             trans_row_id,
             transaction_month,

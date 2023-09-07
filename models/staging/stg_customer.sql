@@ -16,7 +16,7 @@ required_cust_columns as(
             customer_country,
             customer_category
     from 
-            {{ source('sail', 'raw_sales_data') }}
+            {{ ref('stg_initial') }}
     group by 
             cust_surr_id,
             customer,
