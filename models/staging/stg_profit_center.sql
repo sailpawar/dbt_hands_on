@@ -6,7 +6,7 @@ agg_cols as (
         PROFIT_CENTER_DESCRIPTION, 
         PROFIT_CENTER_MANAGER
     from 
-        {{ source('sail', 'raw_sales_data') }}
+        {{ ref('stg_initial') }}
     group by 
         PROFIT_CENTER,PROFIT_CENTER_DESCRIPTION,PROFIT_CENTER_MANAGER,pc_row_id
     
