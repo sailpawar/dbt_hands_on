@@ -1,22 +1,18 @@
 with required_columns as (
     select 
-            tmy.year,
-            tmy.transaction_month,
-            fs.SALES_PERSON,
-            fs.SALES_TARGET,
-            sum(fs.ACTUAL_SALES) as actual_sales
+            year,
+            transaction_month_in_number,
+            SALES_PERSON,
+            SALES_TARGET,
+            sum(ACTUAL_SALES) as actual_sales
 
-    from {{ ref('stg_fact_sales') }} fs
-    join
-    {{ ref('stg_transaction_month_year') }} tmy
-    on
-    fs.FK_SURR_TRANS_ID = tmy.TRANS_ROW_ID
+    from {{ ref('stg_fact_sales') }} 
 
     group by
-            fs.SALES_PERSON,
-            fs.SALES_TARGET,
-            tmy.transaction_month,
-            tmy.year
+            SALES_PERSON,
+            SALES_TARGET,
+            transaction_month_in_number,
+            year
 
 ),
 final_output as(
@@ -32,3 +28,4 @@ from required_columns
 )
 
 select * from final_output
+order by year, transaction_month_in_number
