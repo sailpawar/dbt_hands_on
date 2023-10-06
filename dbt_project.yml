@@ -40,3 +40,7 @@ models:
 
 vars:
     "dbt_date:time_zone": "Asia/Kolkata"
+
+
+# hooks
+on-run-end: ALTER WAREHOUSE DBT_ASSESSMENT_MUSCLE SUSPEND
