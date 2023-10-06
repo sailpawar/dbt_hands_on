@@ -1,5 +1,4 @@
 {% snapshot source_scd_2 %}
-
     {{
         config(
           target_schema='snapshots',
@@ -8,7 +7,6 @@
           check_cols=['UNIQUE_FOR_EACH_ROW']
         )
     }}
-
     select * from {{ source('sail', 'raw_sales_data') }}
 
 {% endsnapshot %}
