@@ -2,56 +2,73 @@ version: 2
 
 models:
   - name: stg_customer
+    description: holds single record of each customer which is also latest one (1)
     columns:
       - name: cust_latest_vals_on_row
+        description: latest values for that customer are available on this row number in table source_scd_2 like address, pincode (2)
         tests:
           - unique
           - not_null
       - name: surr_cust_id
+        description: surrogate key generated based on customer column using dbt utils
         tests:
           - unique
           - not_null
   - name: stg_profit_center
+    description: holds one and newest record regarding that profit center (3)
     columns:
       - name: profit_center_latest_vals_on_row
+        description: mentioned row number on source_scd_2 tables holds latest information for that profit center (4)
         tests:
           - unique
           - not_null
       - name: PROFIT_CENTER_MANAGER
+        description: name of the manager at that profit center
         tests:
           - not_null
       - name: surr_pc_id
+        description: surrogate key based on profit_center using dbt utils
         tests:
           - unique
           - not_null
   - name: stg_target
+    description: this model is basically used to derieve assignment answer where it checks if that sales person has completed his target for that month-year period
     columns:
       - name: year
+        description: year in which sale was made
         tests:
           - not_null
       - name: transaction_month_in_number
+        description: source was provided inconsistent month values which were standardised into these numbers for better aggrigation and ordering
         tests:
           - not_null
       - name: SALES_PERSON
+        description: person who made the sale 
         tests:
           - not_null
       - name: SALES_TARGET
+        description: target assigned to the sales person
         tests:
           - not_null
       - name: actual_sales
+        description: sales made my the sales person
         tests:
           - not_null
       - name: target_achieved
+        description: compares sales_target and sales_achieved and responds with a boolean in here
         tests:
           - not_null
   - name: stg_fact_sales
+    description: its a fact table holding primary keys and facts. there is only 1 fact table in this dimentional modelling
     columns:
       - name: fk_surr_pc_id
+        description: foreign key based on profit_center to map with stg_profit_center model
         tests:
           - not_null
       - name: transaction_month_in_number
         tests:
           - not_null
       - name: fk_surr_cust_id
+        description: foreign key based on customer to map with stg_customer model
         tests:
           - not_null
