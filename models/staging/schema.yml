@@ -1,0 +1,57 @@
+version: 2
+
+models:
+  - name: stg_customer
+    columns:
+      - name: UNIQUE_FOR_EACH_ROW
+        tests:
+          - unique
+          - not_null
+      - name: surr_cust_id
+        tests:
+          - unique
+          - not_null
+  - name: stg_profit_center
+    columns:
+      - name: cust_latest_vals_on_row
+        tests:
+          - unique
+          - not_null
+      - name: PROFIT_CENTER_MANAGER
+        tests:
+          - not_null
+      - name: surr_pc_id
+        tests:
+          - unique
+          - not_null
+  - name: stg_target
+    columns:
+      - name: year
+        tests:
+          - not_null
+      - name: transaction_month_in_number
+        tests:
+          - not_null
+      - name: SALES_PERSON
+        tests:
+          - not_null
+      - name: SALES_TARGET
+        tests:
+          - not_null
+      - name: actual_sales
+        tests:
+          - not_null
+      - name: target_achieved
+        tests:
+          - not_null
+  - name: stg_fact_sales
+    columns:
+      - name: fk_surr_pc_id
+        tests:
+          - not_null
+      - name: fk_surr_trans_month_year_id
+        tests:
+          - not_null
+      - name: fk_surr_cust_id
+        tests:
+          - not_null

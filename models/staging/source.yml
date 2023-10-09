@@ -9,13 +9,59 @@ sources:
     tables:
       - name: raw_sales_data
         description: data lands in this table in snowflake through snowpipe and s3 integration
-        # columns: 
-        #   - name: ***
+        columns: 
+          - name: UNIQUE_FOR_EACH_ROW
         #     description: the primary key for ***
-        #     tests:
-        #       - unique
-        #       - not_null
-        # loaded_at_field: _etl_loaded_at
-        # freshness:
-        #   warn_after: {count: 12, period: hour}
+            tests:
+              - unique
+              - not_null
+          - name: TRACK_ID
+        #     description: the primary key for ***
+            tests:
+              - not_null
+          - name: YEAR
+        #     description: the primary key for ***
+            tests:
+              - not_null
+          - name: TRANSACTION_MONTH
+        #     description: the primary key for ***
+            tests:
+              - not_null
+          - name: SALES_TARGET
+        #     description: the primary key for ***
+            tests:
+              - not_null
+          - name: SALES_PERSON
+        #     description: the primary key for ***
+            tests:
+              - not_null
+          - name: PROFIT_CENTER_MANAGER
+        #     description: the primary key for ***
+            tests:
+              - not_null
+          - name: PROFIT_CENTER
+        #     description: the primary key for ***
+            tests:
+              - not_null
+          - name: CUSTOMER
+        #     description: the primary key for ***
+            tests:
+              - not_null
+          - name: ACTUAL_SALES
+        #     description: the primary key for ***
+            tests:
+              - not_null
+        loaded_at_field: cast(loaded_in_sf_at as timestamp)
+        freshness:
+          warn_after: {count: 24, period: hour}
           # error_after: {count: 24, period: hour}
+
+
+
+
+
+
+
+
+
+

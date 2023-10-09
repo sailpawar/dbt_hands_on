@@ -27,6 +27,7 @@ customer
 )
 
 select 
+    lkp.cust_latest_vals_on_row,
     rcc.surr_cust_id,
     rcc.customer,
     rcc.customer_contact_fn,

@@ -26,3 +26,5 @@ join
     lookup lkp 
 on
     lkp.profit_center_latest_vals_on_row = spc.UNIQUE_FOR_EACH_ROW
+
+    
