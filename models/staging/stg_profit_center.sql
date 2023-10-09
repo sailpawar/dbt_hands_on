@@ -11,9 +11,13 @@ with scd_profit_center as (
         DBT_VALID_TO is null
 ),
 lookup as(
-select PROFIT_CENTER , max(UNIQUE_FOR_EACH_ROW) as profit_center_latest_vals_on_row from scd_profit_center
+select 
+    PROFIT_CENTER , 
+    max(UNIQUE_FOR_EACH_ROW) as profit_center_latest_vals_on_row 
+from 
+    scd_profit_center
 group by 
-PROFIT_CENTER
+    PROFIT_CENTER
 )
 select 
     lkp.profit_center_latest_vals_on_row,

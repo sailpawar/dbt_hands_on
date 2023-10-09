@@ -42,4 +42,3 @@ vars:
     "dbt_date:time_zone": "Asia/Kolkata"
 
 
-# hooks
