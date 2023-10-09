@@ -16,6 +16,7 @@ group by
 PROFIT_CENTER
 )
 select 
+    lkp.profit_center_latest_vals_on_row,
     spc.surr_pc_id,
     spc.PROFIT_CENTER,
     spc.PROFIT_CENTER_DESCRIPTION,

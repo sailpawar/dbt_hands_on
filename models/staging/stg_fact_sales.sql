@@ -10,3 +10,4 @@ with required_columns as(
     from {{ ref('source_scd_2') }}
 ) select * from required_columns
 
+
