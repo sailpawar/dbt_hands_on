@@ -1,7 +1,6 @@
 with required_columns as(
     select
     {{ dbt_utils.generate_surrogate_key(['PROFIT_CENTER']) }} as fk_surr_pc_id,
-    {{ dbt_utils.generate_surrogate_key(['TRANSACTION_MONTH','YEAR']) }} as fk_surr_trans_month_year_id,
     {{ dbt_utils.generate_surrogate_key(['CUSTOMER']) }} as fk_surr_cust_id,
     SALES_PERSON,
     SALES_TARGET,
@@ -10,3 +9,4 @@ with required_columns as(
     year
     from {{ ref('source_scd_2') }}
 ) select * from required_columns
+
