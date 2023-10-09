@@ -11,44 +11,44 @@ sources:
         description: data lands in this table in snowflake through snowpipe and s3 integration
         columns: 
           - name: UNIQUE_FOR_EACH_ROW
-        #     description: the primary key for ***
+            description: unique sequence for each row 
             tests:
               - unique
               - not_null
           - name: TRACK_ID
-        #     description: the primary key for ***
+            description: to track changes to existing row using (profit_center,transaction_month,year,sales_person,customer)
             tests:
               - not_null
           - name: YEAR
-        #     description: the primary key for ***
+            description: year in which sale was made
             tests:
               - not_null
           - name: TRANSACTION_MONTH
-        #     description: the primary key for ***
+            description: month in which transaction was made
             tests:
               - not_null
           - name: SALES_TARGET
-        #     description: the primary key for ***
+            description: sales target for sales person for that month
             tests:
               - not_null
           - name: SALES_PERSON
-        #     description: the primary key for ***
+            description: sales person who made the sale
             tests:
               - not_null
           - name: PROFIT_CENTER_MANAGER
-        #     description: the primary key for ***
+            description: every profit center must have a manager
             tests:
               - not_null
           - name: PROFIT_CENTER
-        #     description: the primary key for ***
+            description: profit center at which sale was made
             tests:
               - not_null
           - name: CUSTOMER
-        #     description: the primary key for ***
+            description: customer to which sale was made
             tests:
               - not_null
           - name: ACTUAL_SALES
-        #     description: the primary key for ***
+            description: amount of sale for perticular customer in perticular month-year by perticular sales person
             tests:
               - not_null
         loaded_at_field: cast(loaded_in_sf_at as timestamp)
