@@ -11,7 +11,7 @@ required_cust_columns as(
             coalesce(customer_address_1 || ', ' ,' ')  || coalesce(customer_address_2,' ') as customer_address,
             customer_city,
             customer_state,
-            customer_zip,
+            cast(customer_zip as int),
             customer_country,
             customer_category
     from 
@@ -33,11 +33,11 @@ select
     rcc.customer_contact_fn,
     rcc.customer_contact_ln,
     rcc.customer_name,
-    rcc.customer_phone,
+    cast(rcc.customer_phone as int),
     rcc.customer_address,
     rcc.customer_city,
     rcc.customer_state,
-    rcc.customer_zip,
+    rcc.customer_zip ,
     rcc.customer_country,
     rcc.customer_category
 from 

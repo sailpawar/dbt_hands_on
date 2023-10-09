@@ -43,4 +43,3 @@ vars:
 
 
 # hooks
-on-run-end: ALTER WAREHOUSE DBT_ASSESSMENT_MUSCLE SUSPEND
